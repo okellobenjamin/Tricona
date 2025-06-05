@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Trinity College Nabbingo ICT Portal - Senior Five E-Submission System Uganda</title>
+    <meta name="description" content="Trinity College Nabbingo official ICT e-submission portal for Senior Five students. Submit assignments, check grades, and manage ICT coursework online. Uganda secondary school digital platform.">
+    <meta name="keywords" content="Trinity College Nabbingo, ICT portal, Uganda school, Senior Five, e-submission, computer science, assignments, grades, TCN portal, Nabbingo ICT">
+    <meta name="author" content="Trinity College Nabbingo">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Trinity College Nabbingo - ICT E-Submission Portal">
+    <meta property="og:description" content="Official ICT submission portal for Trinity College Nabbingo Senior Five students">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Trinity College Nabbingo">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://your-github-username.github.io/trinity-college-portal/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #8B0000 0%, #FFFAF0 50%, #F5F5DC 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #8B0000, #A52A2A);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="30" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="70" cy="80" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .motto {
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Teacher Login Button */
+        .teacher-login-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .teacher-login-btn:hover {
+            background: white;
+            color: #8B0000;
+            transform: scale(1.05);
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-section h2 {
+            color: #8B0000;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .welcome-section p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .ict-badge {
+            background: #8B0000;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+
+
+        .student-info {
+            background: #F5F5DC;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #8B0000;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #8B0000;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #8B0000;
+            box-shadow: 0 0 5px rgba(139, 0, 0, 0.3);
+        }
+
+        .student-id-display {
+            background: #FFFAF0;
+            border: 2px solid #8B0000;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #8B0000;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        .file-upload-section {
+            background: #FFFAF0;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 2px dashed #8B0000;
+            text-align: center;
+        }
+
+        .file-upload-section h3 {
+            color: #8B0000;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-input-button {
+            background: #8B0000;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .file-input-button:hover {
+            background: #A52A2A;
+        }
+
+        .file-info {
+            margin-top: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .accepted-formats {
+            margin-top: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #8B0000, #A52A2A);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-right: 15px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 0, 0, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .grades-section {
+            background: #F0F8FF;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #007bff;
+        }
+
+        .grades-section h3 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .student-id-input {
+            background: white;
+            border: 2px solid #007bff;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .student-id-input:focus {
+            outline: none;
+            border-color: #0056b3;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+        }
+
+        .check-grades-btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .check-grades-btn:hover {
+            background: #0056b3;
+        }
+
+        .status-message {
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .grades-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .grades-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .grade-item {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: #f9f9f9;
+        }
+
+        .footer {
+            background: #8B0000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        .submission-history {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 5px solid #28a745;
+        }
+
+        .submission-history h3 {
+            color: #8B0000;
+            margin-bottom: 15px;
+        }
+
+        .submission-item {
+            background: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border-left: 3px solid #8B0000;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .submit-btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+                margin-right: 0;
+            }
+
+            .teacher-login-btn {
+                position: static;
+                display: block;
+                margin: 15px auto 0;
+                width: fit-content;
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Schema.org structured data for better SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Trinity College Nabbingo",
+        "description": "Trinity College Nabbingo ICT E-Submission Portal for Senior Five students",
+        "url": "https://your-github-username.github.io/trinity-college-portal/",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "Uganda",
+            "addressRegion": "Central Region"
+        },
+        "educationalLevel": "Secondary School",
+        "courseMode": "ICT/Computer Science"
+    }
+    </script>
+
+    <div class="container">
+        <header class="header">
+            <a href="teacher.html" class="teacher-login-btn" title="Teacher Dashboard Login">LG</a>
+            <h1>TRINITY COLLEGE NABBINGO</h1>
+            <div class="motto">"Be True"</div>
+        </header>
+
+        <main class="main-content">
+
+
+            <div class="welcome-section">
+                <div class="ict-badge">ICT SUBJECT</div>
+                <h2>Senior Five ICT E-Submission Portal</h2>
+                <p>Submit your ICT assignments and projects securely. Once submitted, files cannot be re-downloaded by students.</p>
+            </div>
+
+            <div class="student-info">
+                <div class="form-group">
+                    <label for="studentName">Student Name:</label>
+                    <input type="text" id="studentName" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Your Student ID:</label>
+                    <div id="studentIdDisplay" class="student-id-display">
+                        Your ID will be generated automatically
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="assignmentTitle">Assignment Title:</label>
+                    <input type="text" id="assignmentTitle" placeholder="Enter assignment title" required>
+                </div>
+            </div>
+
+            <!-- Show submission history if student has previous submissions -->
+            <div id="submissionHistory" class="submission-history" style="display: none;">
+                <h3>Your Previous Submissions</h3>
+                <div id="submissionsList"></div>
+            </div>
+
+            <div class="file-upload-section">
+                <h3>Upload Your ICT Work</h3>
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" class="file-input" accept=".pdf,.docx,.doc,.xlsx,.xls,.pub" required>
+                    <div class="file-input-button">Choose File</div>
+                </div>
+                <div id="fileInfo" class="file-info"></div>
+                <div class="accepted-formats">
+                    <strong>Accepted formats:</strong> PDF, Word (.docx, .doc), Excel (.xlsx, .xls), Publisher (.pub)
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <button id="submitBtn" class="submit-btn">Submit ICT Assignment</button>
+            </div>
+
+            <!-- Separate Grades Section -->
+            <div class="grades-section">
+                <h3>Check Your Grades</h3>
+                <p style="margin-bottom: 15px; color: #666;">Enter your Student ID to view your ICT grades and teacher feedback.</p>
+                <input type="text" id="gradeStudentId" class="student-id-input" placeholder="Enter your Student ID (e.g., TCN/001)" required>
+                <button id="checkGradesBtn" class="check-grades-btn">View My Grades</button>
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+        </main>
+
+        <footer class="footer">
+            © 2025 Trinity College Nabbingo - Senior Five ICT E-Submission Portal | 
+            <a href="teacher.html" style="color: #FFD700; text-decoration: none;">Teacher Dashboard</a>
+        </footer>
+    </div>
+
+    <!-- Grades Modal -->
+    <div id="gradesModal" class="grades-modal">
+        <div class="grades-content">
+            <button class="close-btn" onclick="closeGradesModal()">&times;</button>
+            <h2 style="color: #8B0000; margin-bottom: 20px;">My ICT Grades</h2>
+            <div id="gradesContainer">
+                <p>Enter your Student ID to view your grades.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store submissions and grades (using JavaScript variables instead of localStorage)
+        let submissions = [];
+        let grades = [];
+        let studentCounter = 0;
+
+        // Try to load existing data from localStorage if available
+        try {
+            const storedSubmissions = localStorage.getItem('tcn_submissions');
+            const storedGrades = localStorage.getItem('tcn_grades');
+            const storedCounter = localStorage.getItem('tcn_student_counter');
+            
+            if (storedSubmissions) submissions = JSON.parse(storedSubmissions);
+            if (storedGrades) grades = JSON.parse(storedGrades);
+            if (storedCounter) studentCounter = parseInt(storedCounter);
+        } catch (e) {
+            console.log('Using in-memory storage');
+        }
+
+        // File input handling
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('fileInfo');
+        const submitBtn = document.getElementById('submitBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const studentNameInput = document.getElementById('studentName');
+
+        // Generate and display student ID when name is entered
+        studentNameInput.addEventListener('input', function() {
+            const name = this.value.trim();
+            if (name) {
+                // Check if this student already has submissions
+                const existingStudent = submissions.find(sub => sub.studentName.toLowerCase() === name.toLowerCase());
+                if (existingStudent) {
+                    document.getElementById('studentIdDisplay').textContent = existingStudent.studentId;
+                    showSubmissionHistory(existingStudent.studentId);
+                } else {
+                    // Generate new ID for new student
+                    const nextId = studentCounter + 1;
+                    const studentId = `TCN/${String(nextId).padStart(3, '0')}`;
+                    document.getElementById('studentIdDisplay').textContent = studentId;
+                    hideSubmissionHistory();
+                }
+            } else {
+                document.getElementById('studentIdDisplay').textContent = 'Your ID will be generated automatically';
+                hideSubmissionHistory();
+            }
+        });
+
+        function showSubmissionHistory(studentId) {
+            const studentSubmissions = submissions.filter(sub => sub.studentId === studentId);
+            if (studentSubmissions.length > 0) {
+                const historySection = document.getElementById('submissionHistory');
+                const submissionsList = document.getElementById('submissionsList');
+                
+                submissionsList.innerHTML = studentSubmissions.map(sub => {
+                    const grade = grades.find(g => g.submissionId === sub.id);
+                    const gradeText = grade ? `Grade: ${grade.grade}` : 'Not graded yet';
+                    return `
+                        <div class="submission-item">
+                            <strong>${sub.assignmentTitle}</strong><br>
+                            <small>Submitted: ${new Date(sub.submissionDate).toLocaleDateString()} | ${gradeText}</small>
+                        </div>
+                    `;
+                }).join('');
+                
+                historySection.style.display = 'block';
+            }
+        }
+
+        function hideSubmissionHistory() {
+            document.getElementById('submissionHistory').style.display = 'none';
+        }
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const fileSize = (file.size / (1024 * 1024)).toFixed(2); // Convert to MB
+                fileInfo.innerHTML = `
+                    <strong>Selected File:</strong> ${file.name}<br>
+                    <strong>Size:</strong> ${fileSize} MB<br>
+                    <strong>Type:</strong> ${file.type || 'Unknown'}
+                `;
+                fileInfo.style.display = 'block';
+            } else {
+                fileInfo.style.display = 'none';
+            }
+        });
+
+        // Submit assignment
+        submitBtn.addEventListener('click', function() {
+            const studentName = studentNameInput.value.trim();
+            const assignmentTitle = document.getElementById('assignmentTitle').value.trim();
+            const file = fileInput.files[0];
+
+            // Validation
+            if (!studentName || !assignmentTitle || !file) {
+                showStatus('Please fill in all fields and select a file.', 'error');
+                return;
+            }
+
+            // Get or generate student ID
+            let studentId;
+            const existingStudent = submissions.find(sub => sub.studentName.toLowerCase() === studentName.toLowerCase());
+            
+            if (existingStudent) {
+                studentId = existingStudent.studentId;
+                // Check if assignment already submitted
+                const existingSubmission = submissions.find(sub => 
+                    sub.studentId === studentId && 
+                    sub.assignmentTitle.toLowerCase() === assignmentTitle.toLowerCase()
+                );
+
+                if (existingSubmission) {
+                    showStatus('You have already submitted this assignment. Multiple submissions are not allowed.', 'error');
+                    return;
+                }
+            } else {
+                // Generate new student ID
+                studentCounter++;
+                studentId = `TCN/${String(studentCounter).padStart(3, '0')}`;
+                try {
+                    localStorage.setItem('tcn_student_counter', studentCounter.toString());
+                } catch (e) {
+                    console.log('Could not save to localStorage');
+                }
+            }
+
+            // Create submission object
+            const submission = {
+                id: Date.now().toString(),
+                studentName,
+                studentId,
+                subject: 'Computer Science',
+                assignmentTitle,
+                fileName: file.name,
+                fileSize: file.size,
+                fileType: file.type,
+                submissionDate: new Date().toISOString(),
+                fileData: null
+            };
+
+            // Read file and store
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                submission.fileData = e.target.result;
+                submissions.push(submission);
+                try {
+                    localStorage.setItem('tcn_submissions', JSON.stringify(submissions));
+                } catch (e) {
+                    console.log('Could not save to localStorage');
+                }
+                
+                showStatus(`Assignment submitted successfully! Your Student ID is: ${studentId}`, 'success');
+                
+                // Update the displayed student ID
+                document.getElementById('studentIdDisplay').textContent = studentId;
+                
+                // Show submission history
+                showSubmissionHistory(studentId);
+                
+                // Clear the form partially (keep name and ID)
+                document.getElementById('assignmentTitle').value = '';
+                fileInput.value = '';
+                fileInfo.style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // Check grades by Student ID
+        document.getElementById('checkGradesBtn').addEventListener('click', function() {
+            const studentId = document.getElementById('gradeStudentId').value.trim();
+            
+            if (!studentId) {
+                showStatus('Please enter your Student ID to view grades.', 'error');
+                return;
+            }
+            
+            // Find student by ID
+            const student = submissions.find(sub => sub.studentId.toLowerCase() === studentId.toLowerCase());
+            if (!student) {
+                showStatus('No student found with this ID. Please check your Student ID and try again.', 'error');
+                return;
+            }
+            
+            showGrades(studentId);
+        });
+
+        // Enter key functionality for grade checking
+        document.getElementById('gradeStudentId').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('checkGradesBtn').click();
+            }
+        });
+
+        function showGrades(studentId) {
+            const studentGrades = grades.filter(grade => grade.studentId.toLowerCase() === studentId.toLowerCase());
+            const gradesContainer = document.getElementById('gradesContainer');
+            
+            if (studentGrades.length === 0) {
+                gradesContainer.innerHTML = '<p>No grades available yet. Please check back later after your teacher has graded your assignments.</p>';
+            } else {
+                let gradesHTML = `<div style="margin-bottom: 20px; padding: 15px; background: #f0f8ff; border-radius: 8px; border-left: 4px solid #007bff;">
+                    <h4 style="color: #007bff; margin-bottom: 10px;">Student: ${studentGrades[0].studentName}</h4>
+                    <p style="color: #666;"><strong>Student ID:</strong> ${studentId}</p>
+                </div>`;
+                
+                studentGrades.forEach(grade => {
+                    gradesHTML += `
+                        <div class="grade-item">
+                            <h4 style="color: #8B0000;">ICT - ${grade.assignmentTitle}</h4>
+                            <p><strong>Grade:</strong> <span style="font-size: 1.2em; color: #007bff; font-weight: bold;">${grade.grade}</span></p>
+                            <p><strong>Comments:</strong> ${grade.comments || 'No comments provided'}</p>
+                            <p><strong>Graded on:</strong> ${new Date(grade.gradedDate).toLocaleDateString()}</p>
+                        </div>
+                    `;
+                });
+                gradesContainer.innerHTML = gradesHTML;
+            }
+            
+            document.getElementById('gradesModal').style.display = 'block';
+        }
+
+        function closeGradesModal() {
+            document.getElementById('gradesModal').style.display = 'none';
+        }
+
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status-message status-${type}`;
+            statusMessage.style.display = 'block';
+            
+            setTimeout(() => {
+                statusMessage.style.display = 'none';
+            }, 5000);
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('gradesModal');
+            if (e.target === modal) {
+                closeGradesModal();
+            }
+        });
+    </script>
+</body>
+</html>
